@@ -15,6 +15,31 @@
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
 
+## Install and use
+
+    npm install --save js-to-js
+
+Inside your [ExpressJS][express] server use it as a template engine for 'js' files
+
+```js
+var express = require('express');
+var app = express();
+var jsToJs = require('js-to-js');
+// render pretty output, don't minify for now
+app.locals.pretty = true;
+
+// when asked for 'js/analytics-config.js', render it dynamically
+app.get('/js/analytics-config.js', function (req, res) {
+  // TODO: form full path to the input js/analytics-config.js file
+  res.render('js/analytics-config.js', {
+    // use any run-time values, for example from config
+    analyticsId: '4xx-xxxxx'
+  });
+});
+```
+
+[express]: http://expressjs.com/
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2015
