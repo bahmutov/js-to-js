@@ -1,0 +1,27 @@
+extend layout
+block content
+  p
+    | Vivamus hendrerit arcu sed erat molestie
+    | vehicula. Sed auctor neque eu tellus
+    | rhoncus ut eleifend nibh porttitor. Ut in.
+  p
+    | Donec congue lacinia dui, a porttitor
+    | lectus condimentum laoreet. Nunc eu
+    | ullamcorper orci. Quisque eget odio ac
+    | lectus vestibulum faucibus eget in metus.
+    | In pellentesque faucibus vestibulum. Nulla
+    | at nulla justo, eget luctus tortor.
+
+  p Analytics id for this demo #{analyticsId}
+
+  p
+    input#source(value="alert('hi there')")
+    button#run Run code
+    p Goes through the button js script
+
+  p
+    | A different script - just attaches to the page
+    | as a common attack
+    button#attach Attach code
+
+  script(src="js/button-code.js")

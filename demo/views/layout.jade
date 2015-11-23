@@ -1,0 +1,22 @@
+doctype
+html
+  head
+    meta(
+      http-equiv="Content-Security-Policy",
+      content="default-src *; script-src http://127.0.0.1:* http://localhost:* 'unsafe-eval'")
+    title #{title} - Example
+  body
+    header
+      h1 Title is #{title}
+    .container
+      .main-content
+        block content
+    footer
+      p Running on node with Express and Jade
+    script.
+      // notice variable initialization happening
+      // right inside the template, meaning it runs
+      // inside the HTML page
+      var analyticsId = '#{analyticsId}';
+    script(src="js/analytics-config.js")
+    script(src="js/analytics.js")
