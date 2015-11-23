@@ -3,6 +3,18 @@
 > ExpressJS template engine to render JavaScript from JavaScript
 > to avoid inlined code and allow strict and safe Content-Security-Policy.
 
+[![NPM][js-to-js-icon] ][js-to-js-url]
+
+[![Circle CI][ci-badge] ][ci-url]
+[![semantic-release][semantic-image] ][semantic-url]
+
+[js-to-js-icon]: https://nodei.co/npm/js-to-js.png?downloads=true
+[js-to-js-url]: https://npmjs.org/package/js-to-js
+[ci-badge]: https://circleci.com/gh/bahmutov/js-to-js.svg?style=svg
+[ci-url]: https://circleci.com/gh/bahmutov/js-to-js
+[semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-url]: https://github.com/semantic-release/semantic-release
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2015
