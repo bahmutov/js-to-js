@@ -1,10 +1,10 @@
-var log = require('debug')('js-to-js');
+var label = 'js-to-js';
+var log = require('debug')(label);
 var _ = require('lodash');
 var path = require('path');
 
 function jsToJs(filePath, options, callback) {
-  console.log('need to render js file %s', filePath);
-  console.log('with options', options);
+  log('need to render js file %s', filePath);
   var loaded = require(filePath);
 
   // expected loaded to be an object,
@@ -17,8 +17,9 @@ function jsToJs(filePath, options, callback) {
 
   var baseName = path.basename(filePath, '.js');
   var asName = _.camelCase(baseName);
-  console.log('configured options under name %s', asName);
-  console.log(configured);
+  log('exporting options under name %s', asName);
+  log(configured);
+
   return callback(null, 'var ' + asName + ' = ' + src + ';\n');
 }
 
