@@ -93,8 +93,8 @@ Limiting the keys to only the ones already in the input file is done for modular
 
 ## Working example / demo
 
-This repository [][repo] contains fully working example in the [demo][demo folder] subfolder.
-You can run it locally using
+This repository [bahmutov/js-to-js][repo] contains fully working example in the
+[demo][demo folder] subfolder. You can run it locally using
 
     git clone git@github.com:bahmutov/js-to-js.git
     cd js-to-js/demo
@@ -102,8 +102,11 @@ You can run it locally using
     node index.js
     open http://localhost:3000/index.html
 
+You can also see it deployed at [js-to-js.herokuapp.com][deployed].
+
 [repo]: https://github.com/bahmutov/js-to-js
 [demo folder]: https://github.com/bahmutov/js-to-js/tree/master/demo
+[deployed]: http://js-to-js.herokuapp.com/
 
 ### Small print
 
