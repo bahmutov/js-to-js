@@ -1,7 +1,7 @@
 # js-to-js
 
-> ExpressJS template engine to render JavaScript from JavaScript to avoid inlined code
-> and allow strict and safe Content-Security-Policy.
+> ExpressJS template engine to render JavaScript from JavaScript
+> to avoid inlined code and allow strict and safe Content-Security-Policy.
 
 ### Small print
 

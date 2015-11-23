@@ -1,0 +1,21 @@
+{
+  "name": "js-to-js-demo",
+  "version": "1.0.0",
+  "description": "Showing JavaScript to JavaScript template rendering middleware",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "4.13.3",
+    "jade": "1.11.0",
+    "lodash": "3.10.1",
+    "morgan": "1.6.1"
+  }
+}
