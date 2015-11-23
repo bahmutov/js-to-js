@@ -3,6 +3,8 @@
 > ExpressJS template engine to render JavaScript from JavaScript
 > to avoid inlined code and allow strict and safe Content-Security-Policy.
 
+Live demo at [js-to-js.herokuapp.com](http://js-to-js.herokuapp.com/)
+
 [![NPM][js-to-js-icon] ][js-to-js-url]
 
 [![Circle CI][ci-badge] ][ci-url]
