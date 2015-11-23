@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src *; script-src https://rawgit.com 'self'; style-src 'self' 'unsafe-inline'">
+    <title>Demo for js-to-js</title>
+    <style>
+      #ignored {
+        margin: 10px 0px;
+        display: block;
+        white-space: pre;
+        font-family: monospace;
+      }
+      #ignored:before {
+        content: "inline javascript:";
+        font-style: italic;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Demo for js-to-js</h1>
+    </header>
+
+    <div class="container">
+      <div class="main-content">
+        <p>
+          This is a static page used to show JavaScript to JavaScript
+          <a href="https://github.com/bahmutov/js-to-js">js-to-js</a> template
+          rendering.
+        </p>
+        <p>Expected to have analytics id in the generated script 4xx-xxxxx</p>
+      </div>
+    </div>
+    <script src="https://rawgit.com/bahmutov/console-log-div/master/console-log-div.js"></script>
+    <footer>
+      <p>Running on Nodejs with Express</p>
+    </footer>
+    <script src="js/analytics-config.js"></script>
+    <script id="ignored">
+      // try overwriting the config object
+
+      // this script will NOT run because the page Content-Security-Policy
+      // policy forbids inline scripts (for security).
+      analyticsConfig = {
+        analyticsId: 'some-other-value'
+      };
+    </script>
+    <script src="js/analytics.js"></script>
+  </body>
+</html>

@@ -24,13 +24,16 @@ Inside your [ExpressJS][express] server use it as a template engine for 'js' fil
 ```js
 var express = require('express');
 var app = express();
+
+var viewsFolder = join(__dirname, 'views');
+app.set('views', viewsFolder);
+
 var jsToJs = require('js-to-js');
-// render pretty output, don't minify for now
-app.locals.pretty = true;
+app.locals.pretty = true; // render pretty output, don't minify for now
 
 // when asked for 'js/analytics-config.js', render it dynamically
 app.get('/js/analytics-config.js', function (req, res) {
-  // TODO: form full path to the input js/analytics-config.js file
+  // this path is WRT views folder
   res.render('js/analytics-config.js', {
     // use any run-time values, for example from config
     analyticsId: '4xx-xxxxx'
@@ -39,6 +42,48 @@ app.get('/js/analytics-config.js', function (req, res) {
 ```
 
 [express]: http://expressjs.com/
+
+## Expected views JavaScript files
+
+By default we expect the input views to be plain CommonJS modules exporting and object.
+The files are loaded using NodeJS `require` call. For example the `views/js/analytics-config.js`
+file might be just an object with single property.
+
+```js
+module.exports = {
+  analyticsId: 'default-id'
+};
+```
+
+The CommonJS format is simple to use and test.
+
+## The rendered files
+
+The rendered file will have a single variable declared with the value being the object
+from the input file, but the values replaced / extended using dynamic values.
+
+The name of the variable will be the [kebab case][kebab] of the base name of the requested file.
+For example if the input file is `views/js/analytics-config.js` and rendered using options
+
+```js
+{
+  analyticsId: '0123456',
+  user: 'john@gmail.com',
+  UUID: 'abcd012345'
+}
+```
+
+then the produced JavaScript file will contain only the following code
+
+```js
+var analyticsConfig = {
+  analyticsId: '0123456'
+};
+```
+
+Limiting the keys to only the ones already in the input file is done for modularity.
+
+[kebab]: https://lodash.com/docs#kebabCase
 
 ## Working example / demo
 

@@ -1,14 +1,12 @@
-(function initAnalytics(id) {
-  if (!id) {
-    console.error('missing analytics id ' + id);
-    console.log('trying analyticsConfig object');
-    if (typeof analyticsConfig === 'undefined') {
-      console.error('Cannot find analyticsConfig object');
-    }
-    console.log('analytics config object');
-    console.log(analyticsConfig);
-    id = analyticsConfig.analyticsId;
-    return;
+(function initAnalytics() {
+  console.log('trying analyticsConfig object');
+  if (typeof analyticsConfig === 'undefined') {
+    throw new Error('Cannot find analyticsConfig object');
   }
-  console.log('initialized analytics with id', id);
-}(typeof analyticsId === 'undefined' ? '' : analyticsId));
+  console.log('analytics config object');
+  console.log(analyticsConfig);
+  if (analyticsConfig.analyticsId !== '4xx-xxxxx') {
+    throw new Error('Unexpected analytics id ' + analyticsConfig.analyticsId);
+  }
+  console.log('Analytics id configured correctly');
+}());
