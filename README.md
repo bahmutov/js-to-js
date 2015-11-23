@@ -19,6 +19,9 @@ Live demo at [js-to-js.herokuapp.com](http://js-to-js.herokuapp.com/)
 
 Read the following blog posts
 
+* [Disable inline JavaScript for security][disable js post]
+* [JavaScript to JavaScript template language][js-to-js post]
+
 [disable js post]: http://glebbahmutov.com/blog/disable-inline-javascript-for-security/
 [js-to-js post]: http://glebbahmutov.com/blog/javascript-to-javascript-template-engine/
 
