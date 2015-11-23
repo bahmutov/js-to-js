@@ -40,8 +40,8 @@
         "npm run test"
       ],
       "pre-push": [
-        "pkgfiles",
-        "size"
+        "npm run pkgfiles",
+        "npm run size"
       ],
       "post-commit": [],
       "post-merge": []
