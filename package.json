@@ -1,0 +1,29 @@
+{
+  "name": "js-to-js",
+  "version": "1.0.0",
+  "description": "ExpressJS template engine to render JavaScript from JavaScript to avoid inlined code and allow strict and safe Content-Security-Policy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/js-to-js.git"
+  },
+  "keywords": [
+    "express",
+    "expressjs",
+    "middleware",
+    "content-security-policy",
+    "CSP",
+    "templates",
+    "engine",
+    "security"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahmutov/js-to-js/issues"
+  },
+  "homepage": "https://github.com/bahmutov/js-to-js#readme"
+}
