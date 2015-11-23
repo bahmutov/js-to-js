@@ -17,6 +17,11 @@ Live demo at [js-to-js.herokuapp.com](http://js-to-js.herokuapp.com/)
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
 
+Read the following blog posts
+
+[disable js post]: http://glebbahmutov.com/blog/disable-inline-javascript-for-security/
+[js-to-js post]: http://glebbahmutov.com/blog/javascript-to-javascript-template-engine/
+
 ## Install and use
 
     npm install --save js-to-js
