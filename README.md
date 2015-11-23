@@ -34,6 +34,9 @@ app.locals.pretty = true; // render pretty output, don't minify for now
 
 // when asked for 'js/analytics-config.js', render it dynamically
 app.get('/js/analytics-config.js', function (req, res) {
+  // use this for correct content-type -
+  // Express will think it is text/html by default
+  res.setHeader('content-type', 'application/javascript');
   // this path is WRT views folder
   res.render('js/analytics-config.js', {
     // use any run-time values, for example from config

@@ -17,6 +17,7 @@ app.engine('js', jsToJs);
 
 app.get('/js/analytics-config.js', function (req, res) {
   console.log('rendering js file', req.url);
+  res.setHeader('content-type', 'application/javascript');
   // WRT the views folder
   res.render('js/analytics-config.js', {
     analyticsId: '4xx-xxxxx'
