@@ -24,6 +24,13 @@ app.get('/js/analytics-config.js', function (req, res) {
   });
 });
 
+app.get('/js/google-analytics-example.js', function (req, res) {
+  res.setHeader('content-type', 'application/javascript');
+  res.render('js/google-analytics-example.js', {
+    googleAnalyticsId: 'this-is-a-demo'
+  });
+});
+
 app.use(express.static(join(__dirname, 'public')));
 var port = process.env.PORT || 3000;
 var server = app.listen(port);
