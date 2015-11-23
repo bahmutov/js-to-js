@@ -25,7 +25,7 @@ app.get('/js/analytics-config.js', function (req, res) {
 });
 
 app.use(express.static(join(__dirname, 'public')));
-var port = 3000;
+var port = process.env.PORT || 3000;
 var server = app.listen(port);
 
 console.log('listening at port %d',
