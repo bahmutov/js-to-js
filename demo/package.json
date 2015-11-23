@@ -14,7 +14,6 @@
   "private": true,
   "dependencies": {
     "express": "4.13.3",
-    "jade": "1.11.0",
     "js-to-js": "1.0.0",
     "lodash": "3.10.1",
     "morgan": "1.6.1"

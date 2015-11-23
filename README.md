@@ -29,6 +29,7 @@ var viewsFolder = join(__dirname, 'views');
 app.set('views', viewsFolder);
 
 var jsToJs = require('js-to-js');
+app.engine('js', jsToJs);
 app.locals.pretty = true; // render pretty output, don't minify for now
 
 // when asked for 'js/analytics-config.js', render it dynamically

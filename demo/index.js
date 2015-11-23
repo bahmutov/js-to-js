@@ -13,7 +13,6 @@ app.locals.pretty = true;
 
 app.use(morgan('dev'));
 
-var read = require('fs').readFileSync;
 app.engine('js', jsToJs);
 
 app.get('/js/analytics-config.js', function (req, res) {
