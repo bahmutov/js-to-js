@@ -40,6 +40,20 @@ app.get('/js/analytics-config.js', function (req, res) {
 
 [express]: http://expressjs.com/
 
+## Working example / demo
+
+This repository [][repo] contains fully working example in the [demo][demo folder] subfolder.
+You can run it locally using
+
+    git clone git@github.com:bahmutov/js-to-js.git
+    cd js-to-js/demo
+    npm install
+    node index.js
+    open http://localhost:3000/index.html
+
+[repo]: https://github.com/bahmutov/js-to-js
+[demo folder]: https://github.com/bahmutov/js-to-js/tree/master/demo
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2015
