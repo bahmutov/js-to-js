@@ -104,6 +104,8 @@ This repository [bahmutov/js-to-js][repo] contains fully working example in the
 
 You can also see it deployed at [js-to-js.herokuapp.com][deployed].
 
+![demo](images/js-to-js.png)
+
 [repo]: https://github.com/bahmutov/js-to-js
 [demo folder]: https://github.com/bahmutov/js-to-js/tree/master/demo
 [deployed]: http://js-to-js.herokuapp.com/
