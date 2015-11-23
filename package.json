@@ -1,16 +1,16 @@
 {
   "name": "js-to-js",
-  "version": "1.0.0",
   "description": "ExpressJS template engine to render JavaScript from JavaScript to avoid inlined code and allow strict and safe Content-Security-Policy",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "git-issues && commit-wizard",
-    "issues": "git-issues"
+    "issues": "git-issues",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bahmutov/js-to-js.git"
+    "url": "https://github.com/bahmutov/js-to-js.git"
   },
   "keywords": [
     "express",
@@ -39,7 +39,8 @@
   },
   "devDependencies": {
     "git-issues": "1.2.0",
-    "pre-git": "1.3.1"
+    "pre-git": "1.3.1",
+    "semantic-release": "^4.3.5"
   },
   "dependencies": {
     "debug": "2.2.0",
