@@ -1,9 +1,9 @@
+/* eslint no-console:0 */
 var express = require('express');
 var morgan = require('morgan');
 var app = express();
 var path = require('path');
 var join = path.join;
-var _ = require('lodash');
 
 var jsToJs = require('js-to-js');
 

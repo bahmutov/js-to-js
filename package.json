@@ -5,7 +5,7 @@
   "version": "1.1.0",
   "scripts": {
     "test": "npm run lint",
-    "lint": "eslint index.js",
+    "lint": "eslint index.js demo/index.js",
     "commit": "git-issues && commit-wizard",
     "issues": "git-issues",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
