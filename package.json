@@ -12,6 +12,9 @@
     "pkgfiles": "pkgfiles",
     "size": "tarball=\"$(npm pack .)\"; wc -c \"${tarball}\"; tar tvf \"${tarball}\"; rm \"${tarball}\";"
   },
+  "release": {
+    "verifyConditions": {}
+  },
   "files": [
     "index.js"
   ],
