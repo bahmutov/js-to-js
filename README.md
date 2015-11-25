@@ -99,6 +99,24 @@ Limiting the keys to only the ones already in the input file is done for modular
 
 [kebab]: https://lodash.com/docs#kebabCase
 
+## Using as middleware
+
+Sometimes you have a simple object with settings you just want to send to the
+client, but generate a script variable. Just use `js-to-js` as middleware generator.
+
+```js
+var jsToJs = require('js-to-js');
+app.get('/js/demo-config-object.js',
+  jsToJs('demoConfig', { foo: 42, bar: 21 }));
+```
+
+Whenever the client requests `/js/demo-config-object.js` the server will respond
+with dynamically generated script with the following contents
+
+```js
+var demoConfig = { foo: 42, bar: 21};
+```
+
 ## Working example / demo
 
 This repository [bahmutov/js-to-js][repo] contains fully working example in the
