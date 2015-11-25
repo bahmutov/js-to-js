@@ -15,6 +15,7 @@ app.use(morgan('dev'));
 
 app.engine('js', jsToJs);
 
+// render config object
 app.get('/js/analytics-config.js', function (req, res) {
   console.log('rendering js file', req.url);
   res.setHeader('content-type', 'application/javascript');
@@ -24,12 +25,17 @@ app.get('/js/analytics-config.js', function (req, res) {
   });
 });
 
+// render config function
 app.get('/js/google-analytics-example.js', function (req, res) {
   res.setHeader('content-type', 'application/javascript');
   res.render('js/google-analytics-example.js', {
     googleAnalyticsId: 'this-is-a-demo'
   });
 });
+
+// use as middleware for simple object response
+app.get('/js/demo-config-object.js',
+  jsToJs('demoConfig', { foo: 42, bar: 21 }));
 
 app.use(express.static(join(__dirname, 'public')));
 var port = process.env.PORT || 3000;

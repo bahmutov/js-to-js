@@ -5,17 +5,31 @@ var label = 'js-to-js';
 var log = require('debug')(label);
 var _ = require('lodash');
 var path = require('path');
+var plainJson = JSON.stringify;
+var prettyJson = _.partialRight(JSON.stringify, null, 2);
+
+var wrapTemplate = 'var <%= name %> = <%= value %>;\n';
+var compiledWrapTemplate = _.template(wrapTemplate);
 
 function fnToJs(options, fn, callback) {
   la(check.fn(fn), 'missing function', fn);
   la(check.fn(callback), 'missing callback', callback);
 
   var preWrapper = '\n;((';
-  var postWrapper = ')(' + JSON.stringify(options) + '));\n';
+  var postWrapper = ')(' + plainJson(options) + '));\n';
   var wrapped = preWrapper + fn.toString() + postWrapper;
   log('wrapped function');
   log(wrapped);
   return callback(null, wrapped);
+}
+
+function wrapVariable(name, object, pretty) {
+  var printer = pretty ? prettyJson : plainJson;
+  var printed = printer(object);
+  return compiledWrapTemplate({
+    name: name,
+    value: printed
+  });
 }
 
 function objectToJs(filePath, options, loaded, callback) {
@@ -26,18 +40,18 @@ function objectToJs(filePath, options, loaded, callback) {
   // only take settings that exist in the original file,
   // do NOT add (leak) any other settings
   var configured = _.pick(options, Object.keys(loaded));
-  var src = options.pretty ?
-    JSON.stringify(configured, null, 2) : JSON.stringify(configured);
+
 
   var baseName = path.basename(filePath, '.js');
   var asName = _.camelCase(baseName);
   log('exporting options under name %s', asName);
   log(configured);
 
-  return callback(null, 'var ' + asName + ' = ' + src + ';\n');
+  var wrapped = wrapVariable(asName, configured, options.pretty);
+  return callback(null, wrapped);
 }
 
-function jsToJs(filePath, options, callback) {
+function templateRender(filePath, options, callback) {
   log('need to render js file %s', filePath);
   var loaded = require(filePath);
   log('loaded from %s type', filePath, typeof loaded);
@@ -51,6 +65,27 @@ function jsToJs(filePath, options, callback) {
   }
 
   return objectToJs(filePath, options, loaded, callback);
+}
+
+function middlewareSetup(varName, config) {
+  var pretty = true;
+  return function jsToJsMiddleware(req, res) {
+    res.setHeader('content-type', 'application/javascript');
+    var wrapped = wrapVariable(varName, config, pretty);
+    res.send(wrapped);
+  };
+}
+
+function jsToJs() {
+  var isCalledToRenderTemplate = arguments.length === 3;
+  if (isCalledToRenderTemplate) {
+    return templateRender.apply(null, arguments);
+  }
+  var isMiddlewareSetup = arguments.length === 2;
+  if (isMiddlewareSetup) {
+    return middlewareSetup.apply(null, arguments);
+  }
+  la(false, 'Unexpected arguments to', label, arguments);
 }
 
 module.exports = jsToJs;
