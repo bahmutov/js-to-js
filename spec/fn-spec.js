@@ -2,6 +2,7 @@
 var la = require('lazy-ass');
 var check = require('check-more-types');
 var join = require('path').join;
+var safeEval = eval;
 
 describe('js-to-js exported config function handling', function () {
   var jsToJs = require('..');
@@ -14,7 +15,6 @@ describe('js-to-js exported config function handling', function () {
     var testFunctionFilename = join(__dirname, 'test-function-template.js');
     jsToJs(testFunctionFilename, { foo: 42 }, function (ignored, source) {
       la(check.unemptyString(source), 'has transformed source', source);
-      var safeEval = eval;
       var result = safeEval(source);
       la(result === 42, 'test function returns wrong result', result);
       done();
