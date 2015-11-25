@@ -7,6 +7,7 @@ Live demo at [js-to-js.herokuapp.com](http://js-to-js.herokuapp.com/)
 
 [![NPM][js-to-js-icon] ][js-to-js-url]
 
+[![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
 [![Circle CI][ci-badge] ][ci-url]
 [![semantic-release][semantic-image] ][semantic-url]
 
@@ -25,9 +26,11 @@ Read the following blog posts
 [disable js post]: http://glebbahmutov.com/blog/disable-inline-javascript-for-security/
 [js-to-js post]: http://glebbahmutov.com/blog/javascript-to-javascript-template-engine/
 
-## Install and use
+## Install
 
     npm install --save js-to-js
+
+## Simple example
 
 Inside your [ExpressJS][express] server use it as a template engine for 'js' files
 
@@ -57,7 +60,7 @@ app.get('/js/analytics-config.js', function (req, res) {
 
 [express]: http://expressjs.com/
 
-## Expected views JavaScript files
+## The input object file
 
 By default we expect the input views to be plain CommonJS modules exporting and object.
 The files are loaded using NodeJS `require` call. For example the `views/js/analytics-config.js`
@@ -71,7 +74,7 @@ module.exports = {
 
 The CommonJS format is simple to use and test.
 
-## The rendered files
+## The rendered script file
 
 The rendered file will have a single variable declared with the value being the object
 from the input file, but the values replaced / extended using dynamic values.
@@ -98,6 +101,39 @@ var analyticsConfig = {
 Limiting the keys to only the ones already in the input file is done for modularity.
 
 [kebab]: https://lodash.com/docs#kebabCase
+
+## Wrapping a function example
+
+If you need to inject values into a 3rd party script, like Google Analytics,
+export a function that expects options argument. The function will be wrapped
+in an IIFE with actual arguments passed in.
+
+```js
+// analytics.js in the views folders
+module.exports = function (options) {
+  initAnalytics(options.userId);
+};
+```
+
+You route can be setup exactly like before
+
+```js
+var userId = 'xx-yy-bb';
+app.get('/js/analytics.js', function (req, res) {
+  res.setHeader('content-type', 'application/javascript');
+  res.render('analytics.js', {
+    userId: userId
+  });
+});
+```
+
+At runtime it will be rendered back to the user something like this
+
+```js
+(function (options) {
+  initAnalytics(options.userId);
+}({ userId: 'xx-yy-bb' }));
+```
 
 ## Using as middleware
 
