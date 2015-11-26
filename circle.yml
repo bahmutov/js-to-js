@@ -5,4 +5,4 @@ test:
   override:
     - npm test
   post:
-    - npm run semantic-release
+    - DEBUG=condition npm run semantic-release
